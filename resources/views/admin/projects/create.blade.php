@@ -16,17 +16,6 @@
       </div>
       @enderror
     </div>
-    <div class="mb-3 row">
-      <label for="repo" class="col-3 col-form-label text-uppercase">url</label>
-      <div class="col-6">
-        <input type="text" class="form-control @error('repo') is-invalid @enderror" name="repo" id="repo" required placeholder="only repo there" value="{{old('repo')}}">
-      </div>
-      @error('repo')
-      <div class="alert alert-danger p-3 m-3 text-center" role="alert">
-        <strong>error : </strong>{{$message}}
-      </div>
-      @enderror
-    </div>
       <div class="text-center d-flex justify-content-center align-items-center gap-3">
         <button type="submit" class="btn btn-primary text-uppercase">ADD</button>
         <button type="reset" class="btn btn-danger text-uppercase">RESET</button>
