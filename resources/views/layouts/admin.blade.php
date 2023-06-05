@@ -58,16 +58,13 @@
         </nav>
         <main>
             <div class="container">
-                <h2 class="fs-4 text-secondary my-4">
-                    {{ __('Dashboard') }}
-                </h2>
-                <div class="row">
+                <div class="row mt-5">
                     <div class="col-2">
                         <ul class="list-unstyled">
-                            <li class="p-3 bg-danger rounded-3 mb-3 {{ Route::currentRouteName() === 'admin.dashboard' ? 'bg-dark' : '' }}">
+                            <li class="p-3 rounded-3 mb-3 {{ Route::currentRouteName() === 'admin.dashboard' ? 'bg-danger fst-italic fw-bolder' : 'bg-dark' }}">
                                 <a class="text-light fw-bold text-decoration-none" href="{{ route('admin.dashboard') }}">Dashboard</a>
                             </li>
-                            <li class="p-3 bg-danger rounded-3 {{ Route::currentRouteName() === 'admin.projects.index' ? 'bg-dark' : '' }}">
+                            <li class="p-3 rounded-3 {{ str_starts_with(Route::currentRouteName(), 'admin.projects') ? 'bg-danger fst-italic fw-bolder' : 'bg-dark' }}">
                                 <a class="text-light fw-bold text-decoration-none" href="{{ route('admin.projects.index') }}">Projects</a>
                             </li>
                         </ul>

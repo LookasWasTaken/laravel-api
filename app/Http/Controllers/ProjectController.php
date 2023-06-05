@@ -27,7 +27,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("admin.projects.create");
+        $projects = Project::orderByDesc("id")->get();
+        return view("admin.projects.create", compact("projects"));
     }
 
     /**
@@ -38,7 +39,9 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        Project::create($val_data);
+        return to_route('admin.projects.index')->with("added", "repository $request->name successfully added");
     }
 
     /**
@@ -49,7 +52,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        $projects = Project::orderByDesc("id")->get();
+        return view("admin.projects.show", compact("project"));
     }
 
     /**
@@ -60,7 +64,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $projects = Project::orderByDesc("id")->get();
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
@@ -72,7 +77,9 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $val_data = $request->validated();
+        $project->update($val_data);
+        return to_route("admin.projects.show", $project->id)->with("edited", "repository $request->name successfully edited");
     }
 
     /**
@@ -83,6 +90,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return to_route("admin.projects.index")->with("deleted", "repository $project->name successfully deleted");
     }
 }

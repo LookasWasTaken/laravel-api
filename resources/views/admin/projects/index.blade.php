@@ -20,14 +20,18 @@
         <table class="table table-secondary m-0">
             <thead>
                 <tr class="text-uppercase">
+                    <th class="text-center" scope="col">ID</th>
                     <th class="text-center" scope="col">Name</th>
                     <th class="text-center" scope="col">URL</th>
-                    <th class="text-center" scope="col">Action</th>
+                    <th class="text-center" scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($projects as $project)
                 <tr>
+                    <td class="text-center align-middle" width="4%" scope="row">
+                        <span class="text-uppercase">{{$project->id}}</span>
+                    </td>
                     <td class="text-center align-middle" width="25%" scope="row">
                         <span class="text-uppercase">{{$project->name}}</span>
                     </td>
