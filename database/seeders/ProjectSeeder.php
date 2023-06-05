@@ -19,7 +19,8 @@ class ProjectSeeder extends Seeder
         for ($i=0; $i < 5; $i++) { 
             $project = new Project();
             $project->name = $faker->words(2, true);
-            $project->repo = $faker->words(3, true);
+            $project->repo = Project::linkGenerator($project->name);
+            $project->save();
         }
     }
 }
