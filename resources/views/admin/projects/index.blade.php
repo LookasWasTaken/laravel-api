@@ -35,16 +35,18 @@
                     <td class="text-center align-middle" width="25%" scope="row">
                         <span class="text-uppercase">{{$project->name}}</span>
                     </td>
-                    <td class="text-center align-middle">{{$project->repo}}</td>
                     <td class="text-center align-middle">
-                        <a class="btn btn-primary" href="{{route('admin.projects.show', $project->id)}}">
-                            <i class="fa-solid fa-eye"></i>
+                        <a class="text-decoration-none text-muted" href="{{$project->repo}}">{{$project->repo}}</a>
+                    </td>
+                    <td class="text-center align-middle">
+                        <a class="btn border-primary" href="{{route('admin.projects.show', $project->id)}}">
+                            <i class="fa-solid fa-eye text-primary"></i>
                         </a>
-                        <a class="btn btn-success my-3" href="{{route('admin.projects.edit', $project->id)}}">
-                            <i class="fa-regular fa-pen-to-square"></i>
+                        <a class="btn border-success my-3" href="{{route('admin.projects.edit', $project->id)}}">
+                            <i class="fa-regular fa-pen-to-square text-success"></i>
                         </a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{$project->id}}">
-                            <i class="fa-regular fa-trash-can"></i>
+                        <button type="button" class="btn border-danger" data-bs-toggle="modal" data-bs-target="#modal-{{$project->id}}">
+                            <i class="fa-regular fa-trash-can text-danger"></i>
                         </button>
                         <div class="modal fade" id="modal-{{$project->id}}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitle-{{$project->id}}" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">

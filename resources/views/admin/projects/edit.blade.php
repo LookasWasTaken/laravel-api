@@ -18,16 +18,6 @@
             </div>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for="repo" class="form-label text-uppercase">url</label>
-            <input type="text" name="repo" id="repo" class="form-control @error('repo') is-invalid @enderror" required placeholder="only repo there" aria-describedby="repoHelper" value="{{old('repo', $project->repo)}}"></input>
-            <small id="repoHelper" class="text-muted text-uppercase">Insert the repo</small>
-            @error('url')
-            <div class="alert alert-danger p-3 m-3" role="alert">
-                <strong>error: </strong>{{$message}}
-            </div>
-            @enderror
-        </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary text-uppercase mx-3">Save</button>
             <button type="reset" class="btn btn-danger text-uppercase mx-3">Reset</button>

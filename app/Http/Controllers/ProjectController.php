@@ -40,6 +40,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $val_data = $request->validated();
+        $val_data["repo"] = Project::linkGenerator($val_data["name"]);
         Project::create($val_data);
         return to_route('admin.projects.index')->with("added", "repository $request->name successfully added");
     }
@@ -78,6 +79,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $val_data = $request->validated();
+        $val_data["repo"] = Project::linkGenerator($val_data["name"]);
         $project->update($val_data);
         return to_route("admin.projects.show", $project->id)->with("edited", "repository $request->name successfully edited");
     }
