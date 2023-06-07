@@ -22,6 +22,7 @@
                 <tr class="text-uppercase">
                     <th class="text-center" scope="col">ID</th>
                     <th class="text-center" scope="col">Name</th>
+                    <th class="text-center" scope="col">Type</th>
                     <th class="text-center" scope="col">URL</th>
                     <th class="text-center" scope="col">Actions</th>
                 </tr>
@@ -34,6 +35,9 @@
                     </td>
                     <td class="text-center align-middle" width="25%" scope="row">
                         <span class="text-uppercase">{{$project->name}}</span>
+                    </td>
+                    <td class="text-center align-middle" width="25%" scope="row">
+                        <span class="text-uppercase badge text-bg-success">{{$project->type?->name}}</span>
                     </td>
                     <td class="text-center align-middle">
                         <a class="text-decoration-none text-muted" href="{{$project->repo}}">{{$project->repo}}</a>
