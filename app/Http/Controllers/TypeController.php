@@ -64,7 +64,7 @@ class TypeController extends Controller
     public function edit(Type $type)
     {
         $types = Type::orderBy("id")->get();
-        return view("admin.types.edit", compact("types"));
+        return view("admin.types.edit", compact("types", "type"));
     }
 
     /**

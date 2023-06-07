@@ -18,14 +18,15 @@
             </div>
             @enderror
         </div>
-        <div class="mb-3 d-flex row">
-            <label for="color" class="col-3 col-form-label text-uppercase">type:</label>
-            <select class="fs-6 text-muted col-3 p-1 form-select form-select-lg" name="color" id="color">
-                <option>Choose the project type</option>
-                @foreach($types as $type)
-                <option value="{{$type->id}}">{{$type->name}}</option>
-                @endforeach
-            </select>
+        <div class="mb-3">
+            <label for="color" class="form-label text-uppercase">color</label>
+            <input type="text" name="color" id="color" class="form-control @error('color') is-invalid @enderror" required placeholder="only color there (text-bg-****)" aria-describedby="nameHelper" value="{{old('color', $type->color)}}">
+            <small id="nameHelper" class="text-muted text-uppercase">insert the color</small>
+            @error('color')
+            <div class="alert alert-danger p-3 m-3" role="alert">
+                <strong>error: </strong>{{$message}}
+            </div>
+            @enderror
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary text-uppercase mx-3">Save</button>
