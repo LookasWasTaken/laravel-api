@@ -15,7 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::orderBy("id")->get();
+        return view("admin.types.index", compact("types"));
     }
 
     /**
@@ -25,7 +26,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::orderBy("id")->get();
+        return view("admin.types.create", compact("types"));
     }
 
     /**
@@ -36,7 +38,9 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $type_data = $request->validated();
+        Type::create($type_data);
+        return to_route("admin.types.index")->with("added", "type $request->name successfully added");
     }
 
     /**
@@ -47,7 +51,8 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        $types = Type::orderBy("id")->get();
+        return view("admin.types.show", compact("type"));
     }
 
     /**
@@ -58,7 +63,8 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        $types = Type::orderBy("id")->get();
+        return view("admin.types.edit", compact("types"));
     }
 
     /**
@@ -70,7 +76,9 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $type_data = $request->validated();
+        $type->update($type_data);
+        return to_route("admin.types.show", $type->id)->with("edited", "type $request->name successfully edited");
     }
 
     /**
@@ -81,6 +89,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return to_route("admin.types.index")->with("deleted", "repository $type->name successfully deleted");
     }
 }
