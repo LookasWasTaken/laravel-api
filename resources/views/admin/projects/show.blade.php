@@ -41,7 +41,8 @@
     </div>
     <div class="card w-50 mx-auto">
         <div class="card-header rounded">
-            <h2 class="fw-bold">{{$project->name}}</h2>
+            <h4 class="fw-bold">{{$project->name}}</h4>
+            <span class="text-uppercase badge text-bg-success">{{$project->type?->name}}</span>
         </div>
         <div class="card-body">
         <p class="fw-light">{{$project->repo}}</p>

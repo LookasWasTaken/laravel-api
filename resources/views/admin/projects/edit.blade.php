@@ -18,6 +18,15 @@
             </div>
             @enderror
         </div>
+        <div class="mb-3 d-flex row">
+            <label for="type_id" class="col-3 col-form-label text-uppercase">type:</label>
+            <select class="fs-6 text-muted col-3 p-1 form-select form-select-lg" name="type_id" id="type_id">
+                <option>Choose the project type</option>
+                @foreach($types as $type)
+                <option value="{{$type->id}}">{{$type->name}}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary text-uppercase mx-3">Save</button>
             <button type="reset" class="btn btn-danger text-uppercase mx-3">Reset</button>

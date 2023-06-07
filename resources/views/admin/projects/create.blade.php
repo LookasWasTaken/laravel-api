@@ -16,12 +16,21 @@
       </div>
       @enderror
     </div>
-      <div class="text-center d-flex justify-content-center align-items-center gap-3">
-        <button type="submit" class="btn btn-primary text-uppercase">ADD</button>
-        <button type="reset" class="btn btn-danger text-uppercase">RESET</button>
-        <a class="btn btn-secondary text-uppercase" href="{{route('admin.projects.index')}}">back</a>
-      </div>
+    <div class="mb-3 d-flex row">
+      <label for="type_id" class="col-3 col-form-label text-uppercase">type:</label>
+      <select class="w-50 fs-6 text-muted col-3 p-1 form-select form-select-lg" name="type_id" id="type_id">
+        <option>Choose the project type</option>
+        @foreach($types as $type)
+        <option value="{{$type->id}}">{{$type->name}}</option>
+        @endforeach
+      </select>
     </div>
-  </form>
+    <div class="text-center d-flex justify-content-center align-items-center gap-3">
+      <button type="submit" class="btn btn-primary text-uppercase">ADD</button>
+      <button type="reset" class="btn btn-danger text-uppercase">RESET</button>
+      <a class="btn btn-secondary text-uppercase" href="{{route('admin.projects.index')}}">back</a>
+    </div>
+</div>
+</form>
 </div>
 @endsection
