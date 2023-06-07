@@ -37,7 +37,7 @@
                         <span class="text-uppercase">{{$project->name}}</span>
                     </td>
                     <td class="text-center align-middle" width="25%" scope="row">
-                        <span class="text-uppercase badge text-bg-success">{{$project->type?->name}}</span>
+                        <span class="text-uppercase badge {{$project->type?->color}}">{{$project->type?->name}}</span>
                     </td>
                     <td class="text-center align-middle">
                         <a class="text-decoration-none text-muted" href="{{$project->repo}}">{{$project->repo}}</a>

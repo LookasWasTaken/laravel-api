@@ -15,11 +15,17 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        $types = ['Front End', 'Back End', 'Full Stack'];
+        $types = 
+        [
+            ['Front End', 'text-bg-info'],
+            ['Back End', 'text-bg-danger'],
+            ['Full Stack', 'text-bg-success']   
+        ];
 
         foreach ($types as $type) {
             $new_type = new Type();
-            $new_type->name = $type;
+            $new_type->name = $type[0];
+            $new_type->color = $type[1];
             $new_type->save(); 
         }
     }
