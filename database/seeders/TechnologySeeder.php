@@ -23,6 +23,7 @@ class TechnologySeeder extends Seeder
             ['Bootstrap', 'text-bg-success'],
             ['JavaScript', 'text-bg-danger'],
             ['VueJS', 'text-bg-warning'],
+            ['Vite', 'text-bg-success'],
             ['SASS', 'text-bg-light'],
             ['PHP', 'text-bg-dark'],
             ['MySQL', 'text-bg-primary'],

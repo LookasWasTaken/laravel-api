@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -39,6 +40,7 @@ class TypeController extends Controller
     public function store(StoreTypeRequest $request)
     {
         $type_data = $request->validated();
+        $type_data['slug'] = Str::slug($type_data['name'], '-');
         Type::create($type_data);
         return to_route("admin.types.index")->with("added", "type $request->name successfully added");
     }

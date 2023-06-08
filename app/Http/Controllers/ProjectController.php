@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -43,8 +44,14 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $val_data = $request->validated();
+        $val_data['slug'] = Str::slug($val_data['name'], '-');
         $val_data["repo"] = Project::linkGenerator($val_data["name"]);
-        Project::create($val_data);
+        $new_project = Project::create($val_data);
+        if($request["technologies"]){
+            $new_project->technologies()->attach($val_data["technologies"]);
+        } else {
+            $new_project->technologies()->attach([]);
+        }
         return to_route('admin.projects.index')->with("added", "repository $request->name successfully added");
     }
 

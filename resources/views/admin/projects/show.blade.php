@@ -28,7 +28,7 @@
                         <p class="mb-0 text-danger text-uppercase text-center">will be no going back</p>
                     </div>
                     <div class="modal-footer d-flex justify-content-center align-items-center gap-2">
-                        <form action="{{route('admin.projects.destroy', $project->id)}}" method="post">
+                        <form action="{{route('admin.projects.destroy', $project)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Confirm</button>

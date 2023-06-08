@@ -43,9 +43,9 @@
                     <td class="text-center align-middle">
                         <a class="text-decoration-none" href="{{$project->repo}}">{{$project->repo}}</a>
                     </td>
-                    <td class="text-center align-middle" width="10%">
+                    <td class="text-center align-middle" width="6%">
                         @foreach($project->technologies as $technology)
-                        <span class="badge {{$technology?->color}}">{{$technology?->name}}</span>
+                        <span class="d-inline-block badge {{$technology?->color}}">{{$technology?->name}}</span>
                         @endforeach
                     </td>
                     <td class="text-center align-middle" width="15%">
@@ -73,7 +73,7 @@
                                         <p class="mb-0 text-danger text-uppercase">will be no going back</p>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center align-items-center gap-2">
-                                        <form action="{{route('admin.projects.destroy', $project->id)}}" method="post">
+                                        <form action="{{route('admin.projects.destroy', $project)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Confirm</button>

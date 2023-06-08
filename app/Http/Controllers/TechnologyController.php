@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Technology;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -39,6 +40,7 @@ class TechnologyController extends Controller
     public function store(StoreTechnologyRequest $request)
     {
         $tech_data = $request->validated();
+        $tech_data['slug'] = Str::slug($tech_data['name'], '-');
         Technology::create($tech_data);
         return to_route("admin.technologies.index")->with("added", "tech $request->name successfully added");
     }
