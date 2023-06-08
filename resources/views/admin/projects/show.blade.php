@@ -10,7 +10,7 @@
     @endif
     <h4 class="text-dark mx-auto my-2 text-center text-uppercase">You are watching the item #{{$project -> id}}</h4>
     <div class="d-flex justify-content-center align-items-center my-3 gap-3">
-        <a class="btn btn-warning text-uppercase fw-bold" href="{{route('admin.projects.edit', $project->id)}}">edit</a>
+        <a class="btn btn-warning text-uppercase fw-bold" href="{{route('admin.projects.edit', $project)}}">edit</a>
         <a class="btn btn-secondary text-uppercase fw-bold" href="{{route('admin.projects.index')}}">back</a>
         <button type="button" class="btn btn-danger text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#modal-{{$project->id}}">delete</button>
         <div class="modal fade" id="modal-{{$project->id}}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitle-{{$project->id}}" aria-hidden="true">
@@ -48,6 +48,9 @@
             <a class="text-decoration-none" href="{{$project->repo}}">{{$project->repo}}</a>
         </div>
         <div class="card-footer">
+            @foreach($project->technologies as $technology)
+            <span class="badge {{$technology->color}}">{{$technology->name}}</span>
+            @endforeach
         </div>
     </div>
 </div>

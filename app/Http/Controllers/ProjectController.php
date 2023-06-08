@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
+use App\Policies\TechnologyPolicy;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -64,7 +65,9 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $projects = Project::orderByDesc("id")->get();
-        return view("admin.projects.show", compact("project"));
+        $types = Type::orderByDesc("id")->get();
+        $technologies = Technology::orderByDesc("id")->get();
+        return view("admin.projects.show", compact("project", "types", "technologies"));
     }
 
     /**
@@ -76,9 +79,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $projects = Project::orderByDesc("id")->get();
-        $types = Type::orderByDesc("id")->get();
-        $technologies = Technology::orderByDesc("id")->get();
-        return view("admin.projects.edit", compact("project", "types", "technologies"));
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
