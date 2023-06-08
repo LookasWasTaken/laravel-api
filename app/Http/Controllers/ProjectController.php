@@ -79,7 +79,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $projects = Project::orderByDesc("id")->get();
-        return view("admin.projects.edit", compact("project"));
+        $types = Type::orderByDesc("id")->get();
+        $technologies = Technology::orderByDesc("id")->get();
+        return view("admin.projects.edit", compact("project", "types", "technologies"));
     }
 
     /**
