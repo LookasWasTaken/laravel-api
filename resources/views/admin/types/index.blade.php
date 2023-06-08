@@ -39,10 +39,10 @@
                         <span class="text-lowercase">{{$type->color}}</span>
                     </td>
                     <td class="text-center align-middle">
-                        <a class="btn border-primary" href="{{route('admin.types.show', $type->id)}}">
+                        <a class="btn border-primary" href="{{route('admin.types.show', $type)}}">
                             <i class="fa-solid fa-eye text-primary"></i>
                         </a>
-                        <a class="btn border-success my-3" href="{{route('admin.types.edit', $type->id)}}">
+                        <a class="btn border-success my-3" href="{{route('admin.types.edit', $type)}}">
                             <i class="fa-regular fa-pen-to-square text-success"></i>
                         </a>
                         <button type="button" class="btn border-danger" data-bs-toggle="modal" data-bs-target="#modal-{{$type->id}}">
@@ -63,7 +63,7 @@
                                         <p class="mb-0 text-danger text-uppercase">will be no going back</p>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center align-items-center gap-2">
-                                        <form action="{{route('admin.types.destroy', $type->id)}}" method="post">
+                                        <form action="{{route('admin.types.destroy', $type)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Confirm</button>

@@ -43,10 +43,10 @@
                         <a class="text-decoration-none text-muted" href="{{$project->repo}}">{{$project->repo}}</a>
                     </td>
                     <td class="text-center align-middle">
-                        <a class="btn border-primary" href="{{route('admin.projects.show', $project->id)}}">
+                        <a class="btn border-primary" href="{{route('admin.projects.show', $project)}}">
                             <i class="fa-solid fa-eye text-primary"></i>
                         </a>
-                        <a class="btn border-success my-3" href="{{route('admin.projects.edit', $project->id)}}">
+                        <a class="btn border-success my-3" href="{{route('admin.projects.edit', $project)}}">
                             <i class="fa-regular fa-pen-to-square text-success"></i>
                         </a>
                         <button type="button" class="btn border-danger" data-bs-toggle="modal" data-bs-target="#modal-{{$project->id}}">

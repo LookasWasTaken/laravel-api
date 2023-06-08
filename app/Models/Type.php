@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Type extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'color'];
+    protected $fillable = ['name', 'color', 'slug'];
 
     public function projects(): HasMany {
         return $this->hasMany(Project::class);
