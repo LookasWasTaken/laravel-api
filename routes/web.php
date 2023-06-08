@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\TechnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // admin.dashboard
-    Route::resource('/projects', ProjectController::class)->parameters(['projects'=>'project:slug']);
-    Route::resource('/types', TypeController::class)->parameters(['types'=>'type:slug']);
-   
+    Route::resource('/projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+    Route::resource('/types', TypeController::class)->parameters(['types' => 'type:slug']);
+    Route::resource('/technologies', TechnologyController::class)->parameters(['technologies' => 'technology:slug']);
 });
 
 Route::middleware('auth')->group(function () {
@@ -34,4 +35,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

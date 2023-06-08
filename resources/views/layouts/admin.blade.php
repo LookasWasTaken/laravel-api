@@ -70,6 +70,9 @@
                             <li class="p-3 rounded-3 mb-3 {{ str_starts_with(Route::currentRouteName(), 'admin.types') ? 'bg-danger fst-italic fw-bolder' : 'bg-dark' }}">
                                 <a class="text-light fw-bold text-decoration-none" href="{{ route('admin.types.index') }}">Types</a>
                             </li>
+                            <li class="p-3 rounded-3 mb-3 {{ str_starts_with(Route::currentRouteName(), 'admin.technologies') ? 'bg-danger fst-italic fw-bolder' : 'bg-dark' }}">
+                                <a class="text-light fw-bold text-decoration-none" href="{{ route('admin.technologies.index') }}">Technologies</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-10">
