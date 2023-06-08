@@ -31,7 +31,7 @@ class TechnologySeeder extends Seeder
 
         foreach ($technologies as $technology) {
             $new_technology = new Technology();
-            $new_technology->name = $new_technology[0];
+            $new_technology->name = $technology[0];
             $new_technology->color = $technology[1];
             $new_technology->slug = Str::slug($new_technology->name, '-');
             $new_technology->save(); 
