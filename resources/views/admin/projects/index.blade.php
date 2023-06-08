@@ -24,6 +24,7 @@
                     <th class="text-center" scope="col">Name</th>
                     <th class="text-center" scope="col">Type</th>
                     <th class="text-center" scope="col">URL</th>
+                    <th class="text-center" scope="col">Tech</th>
                     <th class="text-center" scope="col">Actions</th>
                 </tr>
             </thead>
@@ -33,16 +34,21 @@
                     <td class="text-center align-middle" width="4%" scope="row">
                         <span class="text-uppercase">{{$project->id}}</span>
                     </td>
-                    <td class="text-center align-middle" width="25%" scope="row">
+                    <td class="text-center align-middle" width="20%" scope="row">
                         <span class="text-uppercase">{{$project->name}}</span>
                     </td>
-                    <td class="text-center align-middle" width="25%" scope="row">
+                    <td class="text-center align-middle" width="10%" scope="row">
                         <span class="text-uppercase badge {{$project->type?->color}}">{{$project->type?->name}}</span>
                     </td>
                     <td class="text-center align-middle">
-                        <a class="text-decoration-none text-muted" href="{{$project->repo}}">{{$project->repo}}</a>
+                        <a class="text-decoration-none" href="{{$project->repo}}">{{$project->repo}}</a>
                     </td>
-                    <td class="text-center align-middle">
+                    <td class="text-center align-middle" width="10%">
+                        @foreach($project->technologies as $technology)
+                        <span class="badge {{$technology?->color}}">{{$technology?->name}}</span>
+                        @endforeach
+                    </td>
+                    <td class="text-center align-middle" width="15%">
                         <a class="btn border-primary" href="{{route('admin.projects.show', $project)}}">
                             <i class="fa-solid fa-eye text-primary"></i>
                         </a>

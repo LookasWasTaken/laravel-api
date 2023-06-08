@@ -7,6 +7,7 @@ use App\Models\Type;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -27,9 +28,10 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+        $technologies = Technology::orderByDesc("id")->get();
         $types = Type::orderByDesc("id")->get();
-        return view("admin.projects.create", compact("types"));
+        return view("admin.projects.create", compact("types", "technologies"));
     }
 
     /**
@@ -68,7 +70,8 @@ class ProjectController extends Controller
     {
         $projects = Project::orderByDesc("id")->get();
         $types = Type::orderByDesc("id")->get();
-        return view("admin.projects.edit", compact("project", "types"));
+        $technologies = Technology::orderByDesc("id")->get();
+        return view("admin.projects.edit", compact("project", "types", "technologies"));
     }
 
     /**
@@ -83,7 +86,12 @@ class ProjectController extends Controller
         $val_data = $request->validated();
         $val_data["repo"] = Project::linkGenerator($val_data["name"]);
         $project->update($val_data);
-        return to_route("admin.projects.show", $project->id)->with("edited", "repository $request->name successfully edited");
+        if($request["technologies"]){
+            $project->technologies()->sync($val_data["technologies"]);
+        } else {
+            $project->technologies()->sync([]);
+        }
+        return to_route("admin.projects.show", $project)->with("edited", "repository $request->name successfully edited");
     }
 
     /**

@@ -15,7 +15,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technologies = Technology::orderBy("id")->get();
+        return view("admin.technologies.index", compact("technologies"));
     }
 
     /**
@@ -25,7 +26,8 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        $technologies = Technology::orderBy("id")->get();
+        return view("admin.technologies.create", compact("technologies"));
     }
 
     /**
@@ -36,7 +38,9 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $tech_data = $request->validated();
+        Technology::create($tech_data);
+        return to_route("admin.technologies.index")->with("added", "tech $request->name successfully added");
     }
 
     /**
@@ -47,7 +51,8 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        //
+        $technologies = Technology::orderBy("id")->get();
+        return view("admin.technologies.show", compact("technology"));
     }
 
     /**
@@ -58,7 +63,8 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        $technologies = Technology::orderBy("id")->get();
+        return view("admin.technologies.edit", compact("technologies", "technology"));
     }
 
     /**
@@ -70,7 +76,9 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $tech_data = $request->validated();
+        $technology->update($tech_data);
+        return to_route("admin.technologies.show", $technology->id)->with("edited", "tech $request->name successfully edited");
     }
 
     /**
@@ -81,6 +89,7 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+        return to_route("admin.technologies.index")->with("deleted", "tech $technology->name successfully deleted");
     }
 }

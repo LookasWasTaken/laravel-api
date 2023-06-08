@@ -18,15 +18,15 @@ class TechnologySeeder extends Seeder
     {
         $technologies = 
         [
-            ['HTML', 'primary'],
-            ['CSS', 'secondary'],
-            ['Bootstrap', 'success'],
-            ['JavaScript', 'danger'],
-            ['VueJS', 'warning'],
-            ['SASS', 'light'],
-            ['PHP', 'dark'],
-            ['MySQL', 'muted'],
-            ['Laravel', 'white'],
+            ['HTML', 'text-bg-primary'],
+            ['CSS', 'text-bg-secondary'],
+            ['Bootstrap', 'text-bg-success'],
+            ['JavaScript', 'text-bg-danger'],
+            ['VueJS', 'text-bg-warning'],
+            ['SASS', 'text-bg-light'],
+            ['PHP', 'text-bg-dark'],
+            ['MySQL', 'text-bg-primary'],
+            ['Laravel', 'text-bg-secondary'],
         ];
 
         foreach ($technologies as $technology) {

@@ -45,7 +45,9 @@
             <span class="text-uppercase badge {{$project->type?->color}}">{{$project->type?->name}}</span>
         </div>
         <div class="card-body">
-        <p class="fw-light">{{$project->repo}}</p>
+            <a class="text-decoration-none" href="{{$project->repo}}">{{$project->repo}}</a>
+        </div>
+        <div class="card-footer">
         </div>
     </div>
 </div>

@@ -25,6 +25,14 @@
         @endforeach
       </select>
     </div>
+    @foreach($technologies as $technology)
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="technologies" name="technologies[]">
+      <label class="form-check-label" for="technologies">
+        {{$technology->name}}
+      </label>
+    </div>
+    @endforeach
     <div class="text-center d-flex justify-content-center align-items-center gap-3">
       <button type="submit" class="btn btn-primary text-uppercase">ADD</button>
       <button type="reset" class="btn btn-danger text-uppercase">RESET</button>

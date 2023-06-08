@@ -5,7 +5,7 @@
     @include('partials.validation')
     <h2 class="text-center text-dark text-uppercase">you are currently editing the item #{{$project->id}}</h2>
     <h2 class="text-center text-dark text-uppercase">{{$project->name}}</h2>
-    <form action="{{route('admin.projects.update', $project->id)}}" method="post" class="text-light bg-dark rounded p-5">
+    <form action="{{route('admin.projects.update', $project)}}" method="post" class="text-light bg-dark rounded p-5">
         @csrf
         @method("put")
         <div class="mb-3">
@@ -27,6 +27,14 @@
                 @endforeach
             </select>
         </div>
+        @foreach($technologies as $technology)
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="technologies" name="technologies[]">
+          <label class="form-check-label" for="technologies">
+            {{$technology->name}}
+          </label>
+        </div>
+        @endforeach
         <div class="text-center">
             <button type="submit" class="btn btn-primary text-uppercase mx-3">Save</button>
             <button type="reset" class="btn btn-danger text-uppercase mx-3">Reset</button>
