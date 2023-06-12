@@ -23,6 +23,7 @@
                     <th class="text-center" scope="col">ID</th>
                     <th class="text-center" scope="col">Name</th>
                     <th class="text-center" scope="col">Type</th>
+                    <th class="text-center" scope="col">IMG</th>
                     <th class="text-center" scope="col">URL</th>
                     <th class="text-center" scope="col">Tech</th>
                     <th class="text-center" scope="col">Actions</th>
@@ -40,6 +41,15 @@
                     <td class="text-center align-middle" width="10%" scope="row">
                         <span class="text-uppercase badge {{$project->type?->color}}">{{$project->type?->name}}</span>
                     </td>
+                    @if($project->image)
+                    <td class="text-center align-middle" width="10%" scope="row">
+                        <img class="img-fluid" src="{{asset('storage/' . $project->image)}}" alt="{{$project->name}} img">
+                    </td>
+                    @else
+                    <td class="text-center align-middle" width="10%" scope="row">
+
+                    </td>
+                    @endif
                     <td class="text-center align-middle">
                         <a class="text-decoration-none" href="{{$project->repo}}">{{$project->repo}}</a>
                     </td>
@@ -66,7 +76,7 @@
                                         <h5 class="text-muted fs-6 text-uppercase">You are going to delete</h5>
                                         <h5 class="modal-title mb-2 text-uppercase fw-bold" id="modalTitle-{{$project->id}}">{{$project->name}}</h5>
                                         <h5 class="modal-title mb-2 fs-6 text-muted" id="modalTitle-{{$project->id}}">No. {{$project->id}}</h5>
-                                        <img width="120" src="{{$project->thumb}}" alt="">
+                                        <img width="120" src="{{asset('storage/' . $project->image)}}" alt="">
                                     </div>
                                     <div class="modal-body">
                                         <p class="mb-0 text-danger text-uppercase">Once confirmed, there</p>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use App\Policies\TechnologyPolicy;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -47,6 +48,8 @@ class ProjectController extends Controller
         $val_data = $request->validated();
         $val_data['slug'] = Str::slug($val_data['name'], '-');
         $val_data["repo"] = Project::linkGenerator($val_data["name"]);
+        $img_path = Storage::put("uploads", $val_data["image"]);
+        $val_data["image"] = $img_path;
         $new_project = Project::create($val_data);
         if($request["technologies"]){
             $new_project->technologies()->attach($val_data["technologies"]);

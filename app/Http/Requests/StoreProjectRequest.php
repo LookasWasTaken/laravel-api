@@ -27,7 +27,8 @@ class StoreProjectRequest extends FormRequest
         return [
             "name" => ["required", Rule::unique("projects", "name"), "min:2", "max:100"],
             "type_id" => ["exists:types,id", "nullable"],
-            "technologies" => ["exists:technologies,id", "nullable"]
+            "technologies" => ["exists:technologies,id", "nullable"],
+            "image" => [Rule::unique("projects", "image"), "max:2048", "nullable"],
         ];
     }
 }

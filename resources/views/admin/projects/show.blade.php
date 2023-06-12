@@ -21,7 +21,7 @@
                         <h5 class="text-muted fs-6 text-uppercase">You are going to delete</h5>
                         <h5 class="modal-title mb-2 text-uppercase fw-bold" id="modalTitle-{{$project->id}}">{{$project->name}}</h5>
                         <h5 class="modal-title mb-2 fs-6 text-muted" id="modalTitle-{{$project->id}}">No. {{$project->id}}</h5>
-                        <img width="120" src="{{$project->thumb}}" alt="">
+                        <img width="120" src="{{$project->image}}" alt="">
                     </div>
                     <div class="modal-body">
                         <p class="mb-0 text-danger text-uppercase text-center">Once confirmed, there</p>
@@ -44,8 +44,9 @@
             <h4 class="fw-bold">{{$project->name}}</h4>
             <span class="text-uppercase badge {{$project->type?->color}}">{{$project->type?->name}}</span>
         </div>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center gap-3">
             <a class="text-decoration-none" href="{{$project->repo}}">{{$project->repo}}</a>
+            <img width="120" src="{{asset('storage/' . $project->image)}}" alt="">
         </div>
         <div class="card-footer">
             @foreach($project->technologies as $technology)

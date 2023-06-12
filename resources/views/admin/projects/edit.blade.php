@@ -5,7 +5,7 @@
     @include('partials.validation')
     <h2 class="text-center text-dark text-uppercase">you are currently editing the item #{{$project->id}}</h2>
     <h2 class="text-center text-dark text-uppercase">{{$project->name}}</h2>
-    <form action="{{route('admin.projects.update', $project)}}" method="post" class="text-light bg-dark rounded p-5">
+    <form action="{{route('admin.projects.update', $project)}}" method="post" class="text-light bg-dark rounded p-5" enctype="multipart/form-data">
         @csrf
         @method("put")
         <div class="mb-3">
@@ -27,12 +27,19 @@
                 @endforeach
             </select>
         </div>
+        <div class="mb-3 row">
+            <label for="image" class="col-3 col-form-label text-uppercase">image:</label>
+            <img style="width:60px !important" src="{{asset('storage/' . $project->image)}}" alt="">
+            <div class="col-6">
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required placeholder="only image there">
+            </div>
+        </div>
         @foreach($technologies as $technology)
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="technologies" name="technologies[]">
-          <label class="form-check-label" for="technologies">
-            {{$technology->name}}
-          </label>
+            <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="technologies" name="technologies[]">
+            <label class="form-check-label" for="technologies">
+                {{$technology->name}}
+            </label>
         </div>
         @endforeach
         <div class="text-center">

@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'type_id', 'repo', 'slug'];
+    protected $fillable = ['name', 'type_id', 'repo', 'slug', 'image'];
 
     public static function linkGenerator($projectName){
         $repo = 'https://github.com/LookasWasTaken/' . Str::slug($projectName, '-');

@@ -3,7 +3,7 @@
 @section("content")
 <div class="container">
   @include('partials.validation')
-  <form class="text-light p-5 bg-dark m-3 rounded" action="{{route('admin.projects.store')}}" method="post">
+  <form class="text-light p-5 bg-dark m-3 rounded" action="{{route('admin.projects.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3 row">
       <label for="name" class="col-3 col-form-label text-uppercase">name:</label>
@@ -25,20 +25,26 @@
         @endforeach
       </select>
     </div>
-    @foreach($technologies as $technology)
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="technologies" name="technologies[]">
-      <label class="form-check-label" for="technologies">
-        {{$technology->name}}
-      </label>
+    <div class="mb-3 row">
+      <label for="image" class="col-3 col-form-label text-uppercase">image:</label>
+      <div class="col-6">
+        <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required placeholder="only image there">
+      </div>
     </div>
-    @endforeach
-    <div class="text-center d-flex justify-content-center align-items-center gap-3">
-      <button type="submit" class="btn btn-primary text-uppercase">ADD</button>
-      <button type="reset" class="btn btn-danger text-uppercase">RESET</button>
-      <a class="btn btn-secondary text-uppercase" href="{{route('admin.projects.index')}}">back</a>
+      @foreach($technologies as $technology)
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="technologies" name="technologies[]">
+        <label class="form-check-label" for="technologies">
+          {{$technology->name}}
+        </label>
+      </div>
+      @endforeach
+      <div class="text-center d-flex justify-content-center align-items-center gap-3">
+        <button type="submit" class="btn btn-primary text-uppercase">ADD</button>
+        <button type="reset" class="btn btn-danger text-uppercase">RESET</button>
+        <a class="btn btn-secondary text-uppercase" href="{{route('admin.projects.index')}}">back</a>
+      </div>
     </div>
-</div>
-</form>
+  </form>
 </div>
 @endsection
