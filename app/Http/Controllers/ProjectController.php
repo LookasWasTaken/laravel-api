@@ -98,6 +98,15 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
         $val_data["repo"] = Project::linkGenerator($val_data["name"]);
+        if ($request->hasFile('image')) {
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+            // Save the file in the storage and get its path
+            $image_path = Storage::put('uploads', $request->image);
+            //dd($image_path);
+            $val_data['image'] = $image_path;
+        }
         $project->update($val_data);
         if($request["technologies"]){
             $project->technologies()->sync($val_data["technologies"]);
@@ -115,6 +124,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if($project->image){
+            Storage::delete($project->image);
+        }
         $project->delete();
         return to_route("admin.projects.index")->with("deleted", "repository $project->name successfully deleted");
     }
