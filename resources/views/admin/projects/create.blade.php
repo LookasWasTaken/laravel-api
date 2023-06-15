@@ -19,9 +19,9 @@
     <div class="mb-3 d-flex row">
       <label for="type_id" class="col-3 col-form-label text-uppercase">type:</label>
       <select class="w-50 fs-6 text-muted col-3 p-1 form-select form-select-lg" name="type_id" id="type_id">
-        <option>Choose the project type</option>
+        <option value="">Choose the project type</option>
         @foreach($types as $type)
-        <option value="{{$type->id}}">{{$type->name}}</option>
+        <option value="{{$type->id}}"  {{old("type_id",[]) == $type->id ? 'selected' : ''}}>{{$type->name}}</option>
         @endforeach
       </select>
     </div>

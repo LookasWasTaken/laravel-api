@@ -24,6 +24,7 @@
                     <th class="text-center" scope="col">Name</th>
                     <th class="text-center" scope="col">Type</th>
                     <th class="text-center" scope="col">IMG</th>
+                    <th class="text-center" scope="col">Date</th>
                     <th class="text-center" scope="col">URL</th>
                     <th class="text-center" scope="col">Tech</th>
                     <th class="text-center" scope="col">Actions</th>
@@ -32,25 +33,28 @@
             <tbody>
                 @foreach($projects as $project)
                 <tr>
-                    <td class="text-center align-middle" width="4%" scope="row">
+                    <td class="text-center align-middle" width="5%" scope="row">
                         <span class="text-uppercase">{{$project->id}}</span>
                     </td>
-                    <td class="text-center align-middle" width="20%" scope="row">
-                        <span class="text-uppercase">{{$project->name}}</span>
+                    <td class="text-center align-middle" width="15%" scope="row">
+                        <span class="text-uppercase fw-bold">{{$project->name}}</span>
                     </td>
-                    <td class="text-center align-middle" width="10%" scope="row">
+                    <td class="text-center align-middle" width="5%" scope="row">
                         <span class="text-uppercase badge {{$project->type?->color}}">{{$project->type?->name}}</span>
                     </td>
                     @if($project->image)
-                    <td class="text-center align-middle" width="10%" scope="row">
+                    <td class="text-center align-middle" width="13%" scope="row">
                         <img class="img-fluid" src="{{asset('storage/' . $project->image)}}" alt="{{$project->name}} img">
                     </td>
                     @else
-                    <td class="text-center align-middle" width="10%" scope="row">
+                    <td class="text-center align-middle" width="13%" scope="row">
 
                     </td>
                     @endif
-                    <td class="text-center align-middle">
+                    <td class="text-center align-middle" width="7%" scope="row">
+                        <span class="text-uppercase fw-bold">{{$project->date}}</span>
+                    </td>
+                    <td class="text-center align-middle" width="10%">
                         <a class="text-decoration-none" href="{{$project->repo}}">{{$project->repo}}</a>
                     </td>
                     <td class="text-center align-middle" width="6%">
@@ -58,7 +62,7 @@
                         <span class="d-inline-block badge {{$technology?->color}}">{{$technology?->name}}</span>
                         @endforeach
                     </td>
-                    <td class="text-center align-middle" width="15%">
+                    <td class="text-center align-middle" width="20%">
                         <a class="btn border-primary" href="{{route('admin.projects.show', $project)}}">
                             <i class="fa-solid fa-eye text-primary"></i>
                         </a>

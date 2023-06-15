@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('repo')->nullable();
             $table->string('slug')->unique();
             $table->string('image')->unique()->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
