@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\TechnologyController;
+use App\Mail\NewLead;
+use App\Mail\NewLeadMarkdown;
+use App\Models\Lead;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +23,13 @@ use App\Http\Controllers\TechnologyController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/mailable', function(){
+    $lead = Lead::find(2);
+    // print also the markdown template
+    // return new NewLead($lead);
+    return new NewLeadMarkdown($lead);
 });
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
